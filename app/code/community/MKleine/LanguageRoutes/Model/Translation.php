@@ -54,7 +54,7 @@ class MKleine_LanguageRoutes_Model_Translation extends Mage_Core_Model_Abstract
         $collection = $this->getRouteCollection($typeId)
             ->addFieldToFilter('value', $value);
 
-        $cacheKey = sprintf('language_route_front_%d_%d_%s', $this->getStoreId(), $typeId, $translation);
+        $cacheKey = sprintf('language_route_front_%d_%d_%s', $this->getStoreId(), $typeId, $value);
         return $this->getValueOfCollection('translation', $collection, $value, $cacheKey);
     }
 
