@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <adminhtml_languageroute_index>
+        <reference name="content">
+            <block type="mk_languageroutes/adminhtml_languageroute" name="mk_languageroutes_adminhtml_languageroute"/>
+        </reference>
+    </adminhtml_languageroute_index>
+
+</layout>

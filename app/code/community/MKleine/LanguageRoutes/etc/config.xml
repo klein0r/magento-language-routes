@@ -27,6 +27,26 @@
             </mk_languageroutes>
         </helpers>
     </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <mk_languageroutes before="Mage_Adminhtml">MKleine_LanguageRoutes_Adminhtml</mk_languageroutes>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <mk_languageroutes>
+                    <file>mk_languageroutes.xml</file>
+                </mk_languageroutes>
+            </updates>
+        </layout>
+    </adminhtml>
     <default>
         <web>
             <routers>

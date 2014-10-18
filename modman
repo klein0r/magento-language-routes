@@ -1,2 +1,3 @@
 app/code/community/MKleine/* app/code/community/MKleine/
 app/etc/modules/* app/etc/modules/
+app/design/adminhtml/default/default/layout/* app/design/adminhtml/default/default/layout/
