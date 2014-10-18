@@ -104,6 +104,8 @@ class MKleine_LanguageRoutes_Model_Translation extends Mage_Core_Model_Abstract
     {
         /* @var $cache Varien_Cache_Core */
         $cache = Mage::app()->getCache();
-        $cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array(self::LANGUAGEROUTE_CACHE_TAG));
+        if ($cache) {
+            $cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array(self::LANGUAGEROUTE_CACHE_TAG));
+        }
     }
 }
