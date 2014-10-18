@@ -38,6 +38,15 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
 
     protected function _prepareForm()
     {
+        /*
+         * Checking if user have permissions to save information
+         */
+        if ($this->_isAllowedAction('save')) {
+            $isElementDisabled = false;
+        } else {
+            $isElementDisabled = true;
+        }
+
         $form = new Varien_Data_Form();
         $this->setForm($form);
         $fieldset = $form->addFieldset('languageroute_form',
@@ -46,16 +55,44 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
             )
         );
 
-        $fieldset->addField('variable', 'text', array(
-            'label' => $this->__('Variable'),
+        /**
+         * Check is single store mode
+         */
+        if (!Mage::app()->isSingleStoreMode()) {
+            $field = $fieldset->addField('store_id', 'select', array(
+                    'label'     => Mage::helper('cms')->__('Store View'),
+                    'title'     => Mage::helper('cms')->__('Store View'),
+                    'required'  => true,
+                    'values'    => Mage::getSingleton('adminhtml/system_store')->getStoreValuesForForm(false, false),
+                    'disabled'  => $isElementDisabled,
+                    'name' => 'store_id',
+                ));
+            $renderer = $this->getLayout()->createBlock('adminhtml/store_switcher_form_renderer_fieldset_element');
+            $field->setRenderer($renderer);
+        }
+        else {
+            $fieldset->addField('store_id', 'hidden', array(
+                'value'     => Mage::app()->getStore(true)->getId()
+            ));
+            //$model->setStoreId(Mage::app()->getStore(true)->getId());
+        }
+
+        $fieldset->addField('type_id', 'text', array(
+            'label' => $this->__('Value'),
             'required' => true,
-            'name' => 'variable',
+            'name' => 'type_id',
         ));
 
-        $fieldset->addField('replacement', 'text', array(
-            'label' => $this->__('Replacement'),
+        $fieldset->addField('value', 'text', array(
+            'label' => $this->__('Value'),
             'required' => true,
-            'name' => 'replacement',
+            'name' => 'value',
+        ));
+
+        $fieldset->addField('translation', 'text', array(
+            'label' => $this->__('Translation'),
+            'required' => true,
+            'name' => 'translation',
         ));
 
         if (Mage::getSingleton('adminhtml/session')->getLanguagerouteData()) {

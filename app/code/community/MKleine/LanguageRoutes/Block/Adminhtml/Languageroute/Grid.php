@@ -21,23 +21,29 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Grid
 
     protected function _prepareColumns()
     {
-        $this->addColumn('languageroute_id', array(
+        $this->addColumn('entity_id', array(
             'header' => $this->__('ID'),
             'align' => 'right',
             'width' => '50px',
-            'index' => 'languageroute_id',
+            'index' => 'entity_id',
         ));
 
-        $this->addColumn('variable', array(
-            'header' => $this->__('Variable'),
+        $this->addColumn('type_id', array(
+            'header' => $this->__('Type'),
             'align' => 'left',
-            'index' => 'variable',
+            'index' => 'type_id',
         ));
 
-        $this->addColumn('replacement', array(
-            'header' => $this->__('Replacement'),
+        $this->addColumn('value', array(
+            'header' => $this->__('Value'),
             'align' => 'left',
-            'index' => 'replacement',
+            'index' => 'value',
+        ));
+
+        $this->addColumn('translation', array(
+            'header' => $this->__('Translation'),
+            'align' => 'left',
+            'index' => 'translation',
         ));
 
         $this->addColumn('action',

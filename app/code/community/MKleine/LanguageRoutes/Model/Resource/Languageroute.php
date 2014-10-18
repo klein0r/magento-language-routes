@@ -5,6 +5,6 @@ class MKleine_LanguageRoutes_Model_Resource_Languageroute
 {
     public function _construct()
     {
-        $this->_init('mk_languageroutes/languageroute', 'languageroute_id');
+        $this->_init('mk_languageroutes/languageroute', 'entity_id');
     }
 }

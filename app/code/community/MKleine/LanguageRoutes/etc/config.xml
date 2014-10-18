@@ -9,7 +9,16 @@
         <models>
             <mk_languageroutes>
                 <class>MKleine_LanguageRoutes_Model</class>
+                <resourceModel>mk_languageroutes_resource</resourceModel>
             </mk_languageroutes>
+            <mk_languageroutes_resource>
+                <class>MKleine_LanguageRoutes_Model_Resource</class>
+                <entities>
+                    <languageroute>
+                        <table>languageroutes</table>
+                    </languageroute>
+                </entities>
+            </mk_languageroutes_resource>
             <core>
                 <rewrite>
                     <url>MKleine_LanguageRoutes_Model_Core_Url</url>
@@ -26,6 +35,26 @@
                 <class>MKleine_LanguageRoutes_Helper</class>
             </mk_languageroutes>
         </helpers>
+        <resources>
+            <languageroutes_setup>
+                <setup>
+                    <module>MKleine_LanguageRoutes</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </languageroutes_setup>
+            <languageroutes_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </languageroutes_write>
+            <languageroutes_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </languageroutes_read>
+        </resources>
     </global>
     <admin>
         <routers>
