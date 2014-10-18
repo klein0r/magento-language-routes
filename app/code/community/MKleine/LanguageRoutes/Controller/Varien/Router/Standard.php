@@ -1,6 +1,7 @@
 <?php
 
-class MKleine_LanguageRoutes_Controller_Varien_Router_Standard extends Mage_Core_Controller_Varien_Router_Standard
+class MKleine_LanguageRoutes_Controller_Varien_Router_Standard
+    extends Mage_Core_Controller_Varien_Router_Standard
 {
     public function collectRoutes($configArea, $useRouterName)
     {
@@ -40,4 +41,8 @@ class MKleine_LanguageRoutes_Controller_Varien_Router_Standard extends Mage_Core
         return parent::match($request);
     }
 
+    public function getFrontNames()
+    {
+        return array_unique(array_keys($this->_modules));
+    }
 }

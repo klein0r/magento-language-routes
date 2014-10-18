@@ -131,4 +131,32 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
 
         $this->_redirect('*/*/index');
     }
+
+    public function valuesAction()
+    {
+        $typeId = $this->getRequest()->getParam('type', MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ROUTER);
+
+        /** @var $helper MKleine_LanguageRoutes_Helper_Data */
+        $helper = Mage::helper('mk_languageroutes');
+
+        $result = array();
+
+        switch ($typeId) {
+
+            case MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ROUTER:
+                $result = $helper->getAvailableRoutes();
+                break;
+
+            case MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_CONTROLLER:
+                $result = $helper->getAvailableControllers();
+                break;
+
+            case MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ACTION:
+                $result = $helper->getAvailableActions();
+                break;
+        }
+
+        $this->getResponse()->setHeader('Content-type', 'application/json');
+        $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+    }
 }

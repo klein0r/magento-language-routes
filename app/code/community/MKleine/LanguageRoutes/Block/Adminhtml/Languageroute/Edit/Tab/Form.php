@@ -103,6 +103,7 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
                 'label' => $this->__('Original Value'),
                 'required' => true,
                 'name' => 'value',
+                #'disabled' => true
             )
         );
 
