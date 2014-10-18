@@ -40,7 +40,11 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
     {
         $form = new Varien_Data_Form();
         $this->setForm($form);
-        $fieldset = $form->addFieldset('languageroute_form', array('legend' => Mage::helper('mk_mailpreview')->__('Allgemein')));
+        $fieldset = $form->addFieldset('languageroute_form',
+            array(
+                'legend' => Mage::helper('mk_languageroutes')->__('Allgemein')
+            )
+        );
 
         $fieldset->addField('variable', 'text', array(
             'label' => $this->__('Variable'),
@@ -54,11 +58,11 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
             'name' => 'replacement',
         ));
 
-        if (Mage::getSingleton('adminhtml/session')->getPlaceholderData()) {
-            $form->setValues(Mage::getSingleton('adminhtml/session')->getPlaceholderData());
-            Mage::getSingleton('adminhtml/session')->setPlaceholderData(null);
-        } elseif (Mage::registry('placeholder_data')) {
-            $form->setValues(Mage::registry('placeholder_data')->getData());
+        if (Mage::getSingleton('adminhtml/session')->getLanguagerouteData()) {
+            $form->setValues(Mage::getSingleton('adminhtml/session')->getLanguagerouteData());
+            Mage::getSingleton('adminhtml/session')->setLanguagerouteData(null);
+        } elseif (Mage::registry('languageroute_data')) {
+            $form->setValues(Mage::registry('languageroute_data')->getData());
         }
 
         return parent::_prepareForm();

@@ -29,8 +29,8 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit
 
     public function getHeaderText()
     {
-        if( Mage::registry('placeholder_data') && Mage::registry('placeholder_data')->getId() ) {
-            return $this->__("Edit Item '%s'", $this->htmlEscape(Mage::registry('placeholder_data')->getVariable()));
+        if( Mage::registry('languageroute_data') && Mage::registry('languageroute_data')->getId() ) {
+            return $this->__("Edit Item '%s'", $this->htmlEscape(Mage::registry('languageroute_data')->getVariable()));
         } else {
             return $this->__('Add Item');
         }

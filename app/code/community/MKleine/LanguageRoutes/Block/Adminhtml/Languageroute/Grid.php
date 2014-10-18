@@ -13,7 +13,7 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Grid
 
     protected function _prepareCollection()
     {
-        $collection = Mage::getModel('mk_mailpreview/placeholder')->getCollection();
+        $collection = Mage::getModel('mk_languageroutes/languageroute')->getCollection();
         $this->setCollection($collection);
 
         return parent::_prepareCollection();
@@ -21,11 +21,11 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Grid
 
     protected function _prepareColumns()
     {
-        $this->addColumn('placeholder_id', array(
+        $this->addColumn('languageroute_id', array(
             'header' => $this->__('ID'),
             'align' => 'right',
             'width' => '50px',
-            'index' => 'placeholder_id',
+            'index' => 'languageroute_id',
         ));
 
         $this->addColumn('variable', array(
@@ -64,13 +64,13 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Grid
 
     protected function _prepareMassaction()
     {
-        $this->setMassactionIdField('placeholder_id');
-        $this->getMassactionBlock()->setFormFieldName('placeholder');
+        $this->setMassactionIdField('languageroute_id');
+        $this->getMassactionBlock()->setFormFieldName('languageroute');
 
         $this->getMassactionBlock()->addItem('delete', array(
-            'label' => Mage::helper('mk_mailpreview')->__('Delete'),
+            'label' => Mage::helper('mk_languageroutes')->__('Delete'),
             'url' => $this->getUrl('*/*/massDelete'),
-            'confirm' => Mage::helper('mk_mailpreview')->__('Are you sure?')
+            'confirm' => Mage::helper('mk_languageroutes')->__('Are you sure?')
         ));
 
         return $this;
