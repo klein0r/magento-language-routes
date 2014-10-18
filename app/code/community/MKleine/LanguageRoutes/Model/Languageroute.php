@@ -3,6 +3,10 @@
 class MKleine_LanguageRoutes_Model_Languageroute
     extends Mage_Core_Model_Abstract
 {
+    const LANGUAGEROUTE_TYPE_ROUTER = 1;
+    const LANGUAGEROUTE_TYPE_CONTROLLER = 2;
+    const LANGUAGEROUTE_TYPE_ACTION = 3;
+
     /**
      * Name of the event object
      *

@@ -21,32 +21,59 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Grid
 
     protected function _prepareColumns()
     {
-        $this->addColumn('entity_id', array(
-            'header' => $this->__('ID'),
-            'align' => 'right',
-            'width' => '50px',
-            'index' => 'entity_id',
-        ));
+        $this->addColumn(
+            'entity_id',
+            array(
+                'header' => $this->__('ID'),
+                'align' => 'right',
+                'width' => '50px',
+                'index' => 'entity_id',
+            )
+        );
 
-        $this->addColumn('type_id', array(
-            'header' => $this->__('Type'),
-            'align' => 'left',
-            'index' => 'type_id',
-        ));
+        $this->addColumn(
+            'store_id',
+            array(
+                'header' => $this->__('Store'),
+                'align' => 'left',
+                'index' => 'store_id',
+                'type' => 'store',
+                'sortable' => true
+            )
+        );
 
-        $this->addColumn('value', array(
-            'header' => $this->__('Value'),
-            'align' => 'left',
-            'index' => 'value',
-        ));
+        $this->addColumn(
+            'type_id',
+            array(
+                'header' => $this->__('Type'),
+                'align' => 'left',
+                'index' => 'type_id',
+                'type' => 'options',
+                'sortable' => true,
+                'options' => Mage::getSingleton('mk_languageroutes/config_source_routetypes')->toArray()
+            )
+        );
 
-        $this->addColumn('translation', array(
-            'header' => $this->__('Translation'),
-            'align' => 'left',
-            'index' => 'translation',
-        ));
+        $this->addColumn(
+            'value',
+            array(
+                'header' => $this->__('Value'),
+                'align' => 'left',
+                'index' => 'value',
+            )
+        );
 
-        $this->addColumn('action',
+        $this->addColumn(
+            'translation',
+            array(
+                'header' => $this->__('Translation'),
+                'align' => 'left',
+                'index' => 'translation',
+            )
+        );
+
+        $this->addColumn(
+            'action',
             array(
                 'header' => $this->__('Action'),
                 'width' => '100',
@@ -63,7 +90,8 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Grid
                 'sortable' => false,
                 'index' => 'stores',
                 'is_system' => true,
-            ));
+            )
+        );
 
         return parent::_prepareColumns();
     }
@@ -73,11 +101,14 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Grid
         $this->setMassactionIdField('languageroute_id');
         $this->getMassactionBlock()->setFormFieldName('languageroute');
 
-        $this->getMassactionBlock()->addItem('delete', array(
-            'label' => Mage::helper('mk_languageroutes')->__('Delete'),
-            'url' => $this->getUrl('*/*/massDelete'),
-            'confirm' => Mage::helper('mk_languageroutes')->__('Are you sure?')
-        ));
+        $this->getMassactionBlock()->addItem(
+            'delete',
+            array(
+                'label' => Mage::helper('mk_languageroutes')->__('Delete'),
+                'url' => $this->getUrl('*/*/massDelete'),
+                'confirm' => Mage::helper('mk_languageroutes')->__('Are you sure?')
+            )
+        );
 
         return $this;
     }
