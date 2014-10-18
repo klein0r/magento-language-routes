@@ -11,15 +11,16 @@ class MKleine_LanguageRoutes_Model_Config_Source_Routetypes
     {
         return array(
             array(
-                'value' => MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ACTION,
-                'label' => Mage::helper('mk_languageroutes')->__('Action')
+                'value' => MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ROUTER,
+                'label' => Mage::helper('mk_languageroutes')->__('Route')
             ),
             array(
                 'value' => MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_CONTROLLER,
-                'label' => Mage::helper('mk_languageroutes')->__('Controller')),
+                'label' => Mage::helper('mk_languageroutes')->__('Controller')
+            ),
             array(
-                'value' => MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ROUTER,
-                'label' => Mage::helper('mk_languageroutes')->__('Route')
+                'value' => MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ACTION,
+                'label' => Mage::helper('mk_languageroutes')->__('Action')
             ),
         );
     }

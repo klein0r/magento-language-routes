@@ -14,12 +14,18 @@ class MKleine_LanguageRoutes_Model_Translation extends Mage_Core_Model_Abstract
 
     public function translateRouteToMage($route)
     {
-        return $this->translateToMage($route, MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ROUTER);
+        return $this->translateToMage(
+            $route,
+            MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ROUTER
+        );
     }
 
     public function translateRouteToFront($route)
     {
-        return $this->translateToFront($route, MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ROUTER);
+        return $this->translateToFront(
+            $route,
+            MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ROUTER
+        );
     }
 
     public function translateControllerToMage($controller)
@@ -40,12 +46,18 @@ class MKleine_LanguageRoutes_Model_Translation extends Mage_Core_Model_Abstract
 
     public function translateActionToMage($action)
     {
-        return $this->translateToMage($action, MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ACTION);
+        return $this->translateToMage(
+            $action,
+            MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ACTION
+        );
     }
 
     public function translateActionToFront($action)
     {
-        return $this->translateToFront($action, MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ACTION);
+        return $this->translateToFront(
+            $action,
+            MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ACTION
+        );
     }
 
     protected function translateToFront($value, $typeId)

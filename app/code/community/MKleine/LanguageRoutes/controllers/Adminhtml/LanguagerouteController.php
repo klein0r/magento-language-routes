@@ -4,22 +4,27 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
     extends Mage_Adminhtml_Controller_Action
 {
 
-    protected function _initAction() {
+    protected function _initAction()
+    {
         $this->loadLayout()
             ->_setActiveMenu('mk_languageroutes/items')
-            ->_addBreadcrumb(Mage::helper('adminhtml')->__('Items Manager'), Mage::helper('adminhtml')->__('Item Manager'));
+            ->_addBreadcrumb(
+                Mage::helper('adminhtml')->__('Items Manager'),
+                Mage::helper('adminhtml')->__('Item Manager')
+            );
 
         return $this;
     }
 
-    public function indexAction() {
+    public function indexAction()
+    {
         $this->_initAction()->renderLayout();
     }
 
-    public function editAction() {
-
-        $id     = $this->getRequest()->getParam('id');
-        $model  = Mage::getModel('mk_languageroutes/languageroute')->load($id);
+    public function editAction()
+    {
+        $id = $this->getRequest()->getParam('id', 0);
+        $model = Mage::getModel('mk_languageroutes/languageroute')->load($id);
 
         if ($model->getId() || $id == 0) {
             $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
@@ -32,8 +37,14 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
             $this->loadLayout();
             $this->_setActiveMenu('mk_languageroutes/items');
 
-            $this->_addBreadcrumb(Mage::helper('adminhtml')->__('Item Manager'), Mage::helper('adminhtml')->__('Item Manager'));
-            $this->_addBreadcrumb(Mage::helper('adminhtml')->__('Item News'), Mage::helper('adminhtml')->__('Item News'));
+            $this->_addBreadcrumb(
+                Mage::helper('adminhtml')->__('Item Manager'),
+                Mage::helper('adminhtml')->__('Item Manager')
+            );
+            $this->_addBreadcrumb(
+                Mage::helper('adminhtml')->__('Item News'),
+                Mage::helper('adminhtml')->__('Item News')
+            );
 
             $this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
 
@@ -43,18 +54,21 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
             $this->renderLayout();
 
         } else {
-            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('mk_languageroutes')->__('Item does not exist'));
+            Mage::getSingleton('adminhtml/session')->addError(
+                Mage::helper('mk_languageroutes')->__('Item does not exist')
+            );
             $this->_redirect('*/*/');
         }
 
     }
 
-    public function newAction() {
+    public function newAction()
+    {
         $this->_forward('edit');
     }
 
-    public function saveAction() {
-
+    public function saveAction()
+    {
         if ($data = $this->getRequest()->getPost()) {
 
             try {
@@ -86,9 +100,9 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
         $this->_redirect('*/*/');
     }
 
-    public function deleteAction() {
-
-        if( $this->getRequest()->getParam('id') > 0 ) {
+    public function deleteAction()
+    {
+        if ($this->getRequest()->getParam('id') > 0) {
             try {
                 $model = Mage::getModel('mk_languageroutes/languageroute');
                 $model->setId($this->getRequest()->getParam('id'))->delete();
@@ -105,11 +119,12 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
         $this->_redirect('*/*/');
     }
 
-    public function massDeleteAction() {
+    public function massDeleteAction()
+    {
 
         $languagerouteIds = $this->getRequest()->getParam('languageroute');
 
-        if(!is_array($languagerouteIds)) {
+        if (!is_array($languagerouteIds)) {
             Mage::getSingleton('adminhtml/session')->addError($this->__('Please select item(s)'));
         } else {
             try {
@@ -120,7 +135,8 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
 
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('adminhtml')->__(
-                        'Total of %d record(s) were successfully deleted', count($languagerouteIds)
+                        'Total of %d record(s) were successfully deleted',
+                        count($languagerouteIds)
                     )
                 );
 
@@ -134,7 +150,10 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
 
     public function valuesAction()
     {
-        $typeId = $this->getRequest()->getParam('type', MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ROUTER);
+        $typeId = $this->getRequest()->getParam(
+            'type',
+            MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ROUTER
+        );
 
         /** @var $helper MKleine_LanguageRoutes_Helper_Data */
         $helper = Mage::helper('mk_languageroutes');
