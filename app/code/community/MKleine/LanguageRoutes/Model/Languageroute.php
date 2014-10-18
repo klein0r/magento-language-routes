@@ -7,12 +7,7 @@ class MKleine_LanguageRoutes_Model_Languageroute
     const LANGUAGEROUTE_TYPE_CONTROLLER = 2;
     const LANGUAGEROUTE_TYPE_ACTION = 3;
 
-    /**
-     * Name of the event object
-     *
-     * @var string
-     */
-    protected $_eventObject = 'languageroute';
+    protected $_eventPrefix = 'languageroute';
 
     public function _construct()
     {

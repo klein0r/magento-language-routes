@@ -75,6 +75,17 @@
                 </mk_languageroutes>
             </updates>
         </layout>
+        <events>
+            <languageroute_save_after>
+                <observers>
+                    <mk_languageroutes>
+                        <class>mk_languageroutes/observer</class>
+                        <type>singleton</type>
+                        <method>languagerouteSaveAfter</method>
+                    </mk_languageroutes>
+                </observers>
+            </languageroute_save_after>
+        </events>
     </adminhtml>
     <default>
         <web>
