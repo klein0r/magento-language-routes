@@ -1,0 +1,15 @@
+{
+    "name": "klein0r/magento-language-routes",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "description": "Allows to translate the default magento routes into other languages",
+    "authors":[
+        {
+            "name": "Matthias Kleine",
+            "email": "dev@mkleine.de"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
