@@ -9,7 +9,7 @@
             "email": "dev@mkleine.de"
         }
     ],
-    "require": {
+    "suggest": {
         "magento-hackathon/magento-composer-installer": "*"
     }
 }
