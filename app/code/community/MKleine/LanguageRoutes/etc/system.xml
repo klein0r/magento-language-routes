@@ -15,6 +15,16 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </enable_route_translation>
+                        <forward_to_translated translate="label,comment" module="mk_languageroutes">
+                            <label>Forward to translated route</label>
+                            <comment>Forward the user to the translated rule when accessing old url</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_web_redirect</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </forward_to_translated>
                     </fields>
                 </url>
             </groups>

@@ -13,3 +13,7 @@
 "Route","Route"
 "Controller","Controller"
 "Action","Action"
+"Enable route translation","URL-Übersetzungen aktivieren"
+"Activates translation of routes by module language routes","Erlaubt, einzelne Teile der URLs zu übersetzen"
+"Forward to translated route","Zu übersetzten URLs weiterleiten"
+"Forward the user to the translated rule when accessing old url","Den User zwingen, die übersetzte URL zu nutzen"

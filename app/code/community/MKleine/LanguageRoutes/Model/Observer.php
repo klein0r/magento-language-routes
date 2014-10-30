@@ -34,7 +34,7 @@ class MKleine_LanguageRoutes_Model_Observer
     /**
      * Cleans the cache when a translation changes
      *
-     * @param $observer
+     * @param $observer Varien_Event_Observer
      */
     public function languagerouteSaveAfter($observer)
     {
@@ -46,7 +46,7 @@ class MKleine_LanguageRoutes_Model_Observer
     /**
      * Will add a canonical link to the non translated version of the url
      *
-     * @param $observer
+     * @param $observer Varien_Event_Observer
      */
     public function controllerActionLayoutRenderBefore($observer)
     {
@@ -55,6 +55,33 @@ class MKleine_LanguageRoutes_Model_Observer
                 /** @var $headBlock Mage_Page_Block_Html_Head */
                 $headBlock = Mage::app()->getLayout()->getBlock('head');
                 $headBlock->addLinkRel('canonical', Mage::getUrl($routeInfo->getInternal(), array('_notranslate' => true)));
+            }
+        }
+    }
+
+    /**
+     * Forward the client to the translated url if configured
+     *
+     * @param $observer Varien_Event_Observer
+     */
+    public function controllerActionPredispatch($observer)
+    {
+        if ($redirectCode = (int)Mage::getStoreConfig('web/url/forward_to_translated')) {
+            if ($redirectCode != 301) {
+                $redirectCode = 302;
+            }
+
+            /** @var $controllerAction Mage_Core_Controller_Front_Action */
+            $controllerAction = $observer->getControllerAction();
+            $pathInfo = trim($controllerAction->getRequest()->getOriginalPathInfo(), '/');
+            $translatedPathInfo = trim(str_replace(Mage::getBaseUrl(), '', Mage::getUrl($pathInfo)), '/');
+
+            // Check if a translated version of the path exists
+            if ($pathInfo != $translatedPathInfo) {
+                $controllerAction->getResponse()
+                    ->setRedirect(Mage::getUrl($pathInfo), $redirectCode)
+                    ->sendResponse();
+                exit;
             }
         }
     }

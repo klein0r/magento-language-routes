@@ -76,6 +76,15 @@
                     </mk_languageroutes>
                 </observers>
             </controller_action_layout_render_before>
+            <controller_action_predispatch>
+                <observers>
+                    <mk_languageroutes>
+                        <class>mk_languageroutes/observer</class>
+                        <type>singleton</type>
+                        <method>controllerActionPredispatch</method>
+                    </mk_languageroutes>
+                </observers>
+            </controller_action_predispatch>
         </events>
     </frontend>
     <admin>
@@ -122,6 +131,7 @@
         <web>
             <url>
                 <enable_route_translation>1</enable_route_translation>
+                <forward_to_translated>0</forward_to_translated>
             </url>
             <routers>
                 <language>

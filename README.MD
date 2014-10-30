@@ -12,6 +12,16 @@
 - **Manage permissions** for translations by roles
 - Old URLs are still working (even if they translated)
 
+## Configuration
+
+You can enable the translation module for each store in configuration:
+
+- System / Configuration / Web / Url Options / Enable route translation (**default: Yes**)
+
+It is possible to forward the user automatically to the translated URL:
+
+- System / Configuration / Web / Url Options / Forward to translated route (**default: No**)
+
 ## Usage
 
 Example: You want translate "/customer/account/login" to "/kunde/konto/anmelden"
