@@ -56,6 +56,15 @@
             </languageroutes_read>
         </resources>
     </global>
+    <frontend>
+        <translate>
+            <modules>
+                <mk_languageroutes>
+                    <file></file>
+                </mk_languageroutes>
+            </modules>
+        </translate>
+    </frontend>
     <admin>
         <routers>
             <adminhtml>
@@ -75,6 +84,13 @@
                 </mk_languageroutes>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <mk_languageroutes>
+                    <file></file>
+                </mk_languageroutes>
+            </modules>
+        </translate>
         <events>
             <languageroute_save_after>
                 <observers>
@@ -89,6 +105,9 @@
     </adminhtml>
     <default>
         <web>
+            <url>
+                <enable_route_translation>1</enable_route_translation>
+            </url>
             <routers>
                 <language>
                     <area>frontend</area>

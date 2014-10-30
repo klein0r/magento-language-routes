@@ -7,7 +7,15 @@ class MKleine_LanguageRoutes_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function isUriTranslatable($url)
     {
-        return (strpos($url, '.html') === false);
+        return ($this->isTranslationEnabled() && strpos($url, '.html') === false);
+    }
+
+    /**
+     * @return bool Check if extension is enabled
+     */
+    public function isTranslationEnabled()
+    {
+        return (bool)Mage::getStoreConfig('web/url/enable_route_translation');
     }
 
     /**
