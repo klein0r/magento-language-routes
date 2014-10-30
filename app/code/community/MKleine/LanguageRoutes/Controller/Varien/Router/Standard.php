@@ -50,7 +50,7 @@ class MKleine_LanguageRoutes_Controller_Varien_Router_Standard
         if (Mage::helper('mk_languageroutes')->isUriTranslatable($request->getPathInfo())) {
             $pathInfo = explode('/', $request->getPathInfo(), 5);
 
-            Mage::register('languageroute_original', $request->getPathInfo());
+            $originalRoute = $request->getPathInfo();
 
             /** @var $translationModel MKleine_LanguageRoutes_Model_Translation */
             $translationModel = Mage::getSingleton('mk_languageroutes/translation');
@@ -74,7 +74,14 @@ class MKleine_LanguageRoutes_Controller_Varien_Router_Standard
                 'path_info' => $pathInfo
             ));
 
-            $request->setPathInfo(join('/', $pathInfo));
+            $internalRoute = join('/', $pathInfo);
+
+            Mage::register('languageroute_information', new Varien_Object(array(
+                'original' => trim($originalRoute, '/'),
+                'internal' => trim($internalRoute, '/')
+            )));
+
+            $request->setPathInfo($internalRoute);
         }
         return parent::match($request);
     }

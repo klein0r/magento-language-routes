@@ -66,6 +66,17 @@
                 </MKleine_LanguageRoutes>
             </modules>
         </translate>
+        <events>
+            <controller_action_layout_render_before>
+                <observers>
+                    <mk_languageroutes>
+                        <class>mk_languageroutes/observer</class>
+                        <type>singleton</type>
+                        <method>controllerActionLayoutRenderBefore</method>
+                    </mk_languageroutes>
+                </observers>
+            </controller_action_layout_render_before>
+        </events>
     </frontend>
     <admin>
         <routers>

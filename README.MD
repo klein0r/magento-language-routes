@@ -29,6 +29,11 @@ Example: You want translate "/customer/account/login" to "/kunde/konto/anmelden"
 
 It is recommended, to install and test this extension in a test environment.
 
+## Dev
+
+If you need an url which is not translated, you can add the parameter _notranslate (set it to true)
+This is the same behavior, as requesting secure urls by adding _secure.
+
 ## Contributors
 
 - Matthias Kleine - [Magento Certified Developer](http://www.magentocommerce.com/certification/directory/dev/878053/)

@@ -42,4 +42,20 @@ class MKleine_LanguageRoutes_Model_Observer
         $translationModel = Mage::getSingleton('mk_languageroutes/translation');
         $translationModel->clearCache();
     }
+
+    /**
+     * Will add a canonical link to the non translated version of the url
+     *
+     * @param $observer
+     */
+    public function controllerActionLayoutRenderBefore($observer)
+    {
+        if ($routeInfo = Mage::registry('languageroute_information')) {
+            if ($routeInfo->getOriginal() != $routeInfo->getInternal()) {
+                /** @var $headBlock Mage_Page_Block_Html_Head */
+                $headBlock = Mage::app()->getLayout()->getBlock('head');
+                $headBlock->addLinkRel('canonical', Mage::getUrl($routeInfo->getInternal(), array('_notranslate' => true)));
+            }
+        }
+    }
 }

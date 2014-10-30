@@ -39,6 +39,21 @@ class MKleine_LanguageRoutes_Model_Core_Url extends Mage_Core_Model_Url
         return Mage::getSingleton('mk_languageroutes/translation');
     }
 
+    protected function translationEnabled()
+    {
+        return ($this->getNoTranslate() !== true);
+    }
+
+    public function setRouteParams(array $data, $unsetOldParams = true)
+    {
+        if (isset($data['_notranslate'])) {
+            $this->setNoTranslate($data['_notranslate']);
+            unset($data['_notranslate']);
+        }
+
+        parent::setRouteParams($data, $unsetOldParams);
+    }
+
     /**
      * Translates the route part before delivered to frontend
      *
@@ -46,6 +61,10 @@ class MKleine_LanguageRoutes_Model_Core_Url extends Mage_Core_Model_Url
      */
     public function getRouteFrontName()
     {
+        if (!$this->translationEnabled()) {
+            return parent::getRouteFrontName();
+        }
+
         return $this->getTranslationModel()->translateRouteToFront(parent::getRouteFrontName());
     }
 
@@ -56,6 +75,10 @@ class MKleine_LanguageRoutes_Model_Core_Url extends Mage_Core_Model_Url
      */
     public function getControllerName()
     {
+        if (!$this->translationEnabled()) {
+            return parent::getControllerName();
+        }
+
         return $this->getTranslationModel()->translateControllerToFront(parent::getControllerName());
     }
 
@@ -66,6 +89,10 @@ class MKleine_LanguageRoutes_Model_Core_Url extends Mage_Core_Model_Url
      */
     public function getActionName()
     {
+        if (!$this->translationEnabled()) {
+            return parent::getActionName();
+        }
+
         return $this->getTranslationModel()->translateActionToFront(parent::getActionName());
     }
 }
