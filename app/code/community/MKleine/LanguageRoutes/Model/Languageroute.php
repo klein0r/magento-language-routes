@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * Class MKleine_LanguageRoutes_Model_Languageroute
+ *
+ * @method getTypeId
+ * @method setTypeId
+ * @method getValue
+ * @method setValue
+ * @method getTranslation
+ * @method setTranslation
+ * @method getStoreId
+ * @method setStoreId
+ * @method getCreatedAt
+ * @method getUpdatedAt
+ * @method getIsActive
+ */
 class MKleine_LanguageRoutes_Model_Languageroute
     extends Mage_Core_Model_Abstract
 {

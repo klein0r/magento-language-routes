@@ -86,7 +86,8 @@ class MKleine_LanguageRoutes_Model_Translation extends Mage_Core_Model_Abstract
     {
         return Mage::getModel('mk_languageroutes/languageroute')->getCollection()
             ->addFieldToFilter('store_id', $this->getStoreId())
-            ->addFieldToFilter('type_id', $typeId);
+            ->addFieldToFilter('type_id', $typeId)
+            ->addFieldToFilter('is_active', 1);
     }
 
     protected function getValueOfCollection($value, $collection, $fallback, $cacheKey)

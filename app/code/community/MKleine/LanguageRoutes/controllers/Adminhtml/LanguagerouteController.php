@@ -55,7 +55,7 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
 
         } else {
             Mage::getSingleton('adminhtml/session')->addError(
-                Mage::helper('mk_languageroutes')->__('Item does not exist')
+                Mage::helper('mk_languageroutes')->__('Translation does not exist')
             );
             $this->_redirect('*/*/');
         }

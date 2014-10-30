@@ -11,8 +11,8 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit
         $this->_blockGroup = 'mk_languageroutes';
         $this->_controller = 'adminhtml_languageroute';
 
-        $this->_updateButton('save', 'label', $this->__('Save Item'));
-        $this->_updateButton('delete', 'label', $this->__('Delete Item'));
+        $this->_updateButton('save', 'label', $this->__('Save Translation'));
+        $this->_updateButton('delete', 'label', $this->__('Delete Translation'));
 
         $this->_addButton('saveandcontinue', array(
             'label'     => $this->__('Save And Continue Edit'),
@@ -30,7 +30,10 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit
     public function getHeaderText()
     {
         if( Mage::registry('languageroute_data') && Mage::registry('languageroute_data')->getId() ) {
-            return $this->__("Edit Item '%s'", $this->htmlEscape(Mage::registry('languageroute_data')->getVariable()));
+            /** @var $route MKleine_LanguageRoutes_Model_Languageroute */
+            $route = Mage::registry('languageroute_data');
+
+            return $this->__("%s -> %s", $this->escapeHtml($route->getValue()), $this->escapeHtml($route->getTranslation()));
         } else {
             return $this->__('Add Item');
         }

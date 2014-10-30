@@ -7,12 +7,12 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
 
     public function getTabLabel()
     {
-        return $this->__('Content');
+        return $this->__('Translation');
     }
 
     public function getTabTitle()
     {
-        return $this->__('Content');
+        return $this->__('Translation');
     }
 
     public function canShowTab()
@@ -52,7 +52,7 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
         $fieldset = $form->addFieldset(
             'languageroute_form',
             array(
-                'legend' => Mage::helper('mk_languageroutes')->__('Allgemein')
+                'legend' => Mage::helper('mk_languageroutes')->__('Settings')
             )
         );
 

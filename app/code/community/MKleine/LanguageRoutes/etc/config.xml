@@ -59,9 +59,11 @@
     <frontend>
         <translate>
             <modules>
-                <mk_languageroutes>
-                    <file></file>
-                </mk_languageroutes>
+                <MKleine_LanguageRoutes>
+                    <files>
+                        <default>MKleine_LanguageRoutes.csv</default>
+                    </files>
+                </MKleine_LanguageRoutes>
             </modules>
         </translate>
     </frontend>
@@ -86,9 +88,11 @@
         </layout>
         <translate>
             <modules>
-                <mk_languageroutes>
-                    <file></file>
-                </mk_languageroutes>
+                <MKleine_LanguageRoutes>
+                    <files>
+                        <default>MKleine_LanguageRoutes.csv</default>
+                    </files>
+                </MKleine_LanguageRoutes>
             </modules>
         </translate>
         <events>

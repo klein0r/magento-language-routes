@@ -1,3 +1,5 @@
 app/code/community/MKleine/* app/code/community/MKleine/
 app/etc/modules/* app/etc/modules/
 app/design/adminhtml/default/default/layout/* app/design/adminhtml/default/default/layout/
+app/locale/de_DE/* app/locale/de_DE/
+app/locale/en_US/* app/locale/en_US/

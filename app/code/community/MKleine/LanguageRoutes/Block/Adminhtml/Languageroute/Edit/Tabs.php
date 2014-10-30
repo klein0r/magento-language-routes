@@ -14,8 +14,8 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tabs
   protected function _beforeToHtml()
   {
       $this->addTab('form_section', array(
-          'label'     => Mage::helper('mk_languageroutes')->__('Element'),
-          'title'     => Mage::helper('mk_languageroutes')->__('Element'),
+          'label'     => Mage::helper('mk_languageroutes')->__('Language route'),
+          'title'     => Mage::helper('mk_languageroutes')->__('Language route'),
           'content'   => $this->getLayout()->createBlock('mk_languageroutes/adminhtml_languageroute_edit_tab_form')->toHtml(),
       ));
 
