@@ -85,6 +85,8 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
             )
         );
 
+        $fieldset->addType('languageroute', 'MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Form_Renderer_Fieldset_Languageroute');
+
         /**
          * Check is single store mode
          */
@@ -127,7 +129,7 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
 
         $fieldset->addField(
             'value',
-            'text',
+            'languageroute',
             array(
                 'label' => $this->__('Original Value'),
                 'required' => true,

@@ -150,7 +150,6 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
 
     public function massDeleteAction()
     {
-
         $languagerouteIds = $this->getRequest()->getParam('languageroute');
 
         if (!is_array($languagerouteIds)) {
