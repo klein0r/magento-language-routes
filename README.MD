@@ -44,6 +44,8 @@ It is recommended, to install and test this extension in a test environment.
 If you need an url which is not translated, you can add the parameter _notranslate (set it to true)
 This is the same behavior, as requesting secure urls by adding _secure.
 
+This package is also available at [Packagist](https://packagist.org/packages/mkleine/magento-language-routes)
+
 ## Contributors
 
 - Matthias Kleine - [Magento Certified Developer](http://www.magentocommerce.com/certification/directory/dev/878053/)
