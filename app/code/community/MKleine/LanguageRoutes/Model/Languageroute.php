@@ -84,4 +84,18 @@ class MKleine_LanguageRoutes_Model_Languageroute
         }
         return null;
     }
+
+    /**
+     * Get the timestamp of the latest update
+     *
+     * @return int|null
+     */
+    public function getUpdatedAtTimestamp()
+    {
+        $date = $this->getUpdatedAt();
+        if ($date) {
+            return Varien_Date::toTimestamp($date);
+        }
+        return null;
+    }
 }
