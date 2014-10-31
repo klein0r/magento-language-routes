@@ -59,6 +59,18 @@ class MKleine_LanguageRoutes_Model_Languageroute
         $this->_init('mk_languageroutes/languageroute');
     }
 
+    protected function _beforeSave()
+    {
+        $timestamp = Mage::getModel('core/date')->timestamp();
+        $this->setUpdatedAt($timestamp);
+
+        if (!$this->getId()) {
+            $this->setCreatedAt($timestamp);
+        }
+
+        return parent::_beforeSave();
+    }
+
     /**
      * Get languageroute created at date timestamp
      *
