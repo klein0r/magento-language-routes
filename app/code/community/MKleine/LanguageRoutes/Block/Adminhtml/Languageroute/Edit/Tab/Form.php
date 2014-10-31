@@ -146,6 +146,17 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
             )
         );
 
+        $fieldset->addField(
+            'is_active',
+            'select',
+            array(
+                'label' => $this->__('Is Active'),
+                'required' => true,
+                'name' => 'is_active',
+                'values' => Mage::getSingleton('adminhtml/system_config_source_yesno')->toOptionArray(),
+            )
+        );
+
         if (Mage::getSingleton('adminhtml/session')->getLanguagerouteData()) {
             $form->setValues(Mage::getSingleton('adminhtml/session')->getLanguagerouteData());
             Mage::getSingleton('adminhtml/session')->setLanguagerouteData(null);

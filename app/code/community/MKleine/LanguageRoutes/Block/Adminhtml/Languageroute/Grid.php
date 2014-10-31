@@ -102,6 +102,18 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Grid
         );
 
         $this->addColumn(
+            'is_active',
+            array(
+                'header' => $this->__('Is Active'),
+                'align' => 'left',
+                'index' => 'is_active',
+                'type' => 'options',
+                'sortable' => true,
+                'options' => Mage::getSingleton('adminhtml/system_config_source_yesno')->toArray()
+            )
+        );
+
+        $this->addColumn(
             'action',
             array(
                 'header' => $this->__('Action'),

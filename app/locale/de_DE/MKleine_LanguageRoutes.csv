@@ -1,4 +1,5 @@
 "Language Route","Sprach-URL"
+"Language Routes","Sprach-URLs"
 "Add","Hinzufügen"
 "Save And Continue Edit","Speichern und weiter bearbeiten"
 "Save Translation","Übersetzung speichern"
@@ -6,6 +7,7 @@
 "Type","Typ"
 "Value","Wert"
 "Translation","Übersetzung"
+"Is Active","Aktiv"
 "Action","Aktion"
 "Route Part","URL-Teil"
 "Original Value","Original Wert"

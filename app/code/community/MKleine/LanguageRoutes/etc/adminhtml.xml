@@ -4,7 +4,7 @@
         <system>
             <children>
                 <languageroute translate="title" module="mk_languageroutes">
-                    <title>Language routes</title>
+                    <title>Language Routes</title>
                     <action>adminhtml/languageroute</action>
                     <sort_order>50</sort_order>
                 </languageroute>
@@ -18,7 +18,7 @@
                     <system>
                         <children>
                             <languageroute translate="title" module="mk_languageroutes">
-                                <title>Language routes</title>
+                                <title>Language Routes</title>
                                 <sort_order>50</sort_order>
                             </languageroute>
                         </children>
