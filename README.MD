@@ -37,7 +37,13 @@ Example: You want translate "/customer/account/login" to "/kunde/konto/anmelden"
 6. Save
 7. Check the changes in Frontend
 
-It is recommended, to install and test this extension in a test environment.
+**It is recommended, to install and test this extension in a test environment.**
+
+## Screenshots
+
+![Backend Grid](/screenshots/Backend-Grid.png)
+
+![Backend Grid](/screenshots/Backend-Form.png)
 
 ## Dev
 
@@ -45,6 +51,11 @@ If you need an url which is not translated, you can add the parameter _notransla
 This is the same behavior, as requesting secure urls by adding _secure.
 
 This package is also available at [Packagist](https://packagist.org/packages/mkleine/magento-language-routes)
+
+## Requirements
+
+- PHP >= 5.3.0
+- Magento 1.6, 1.7, 1.8, 1.9
 
 ## Contributors
 

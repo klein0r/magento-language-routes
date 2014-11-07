@@ -64,7 +64,7 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit
 
             return $this->__("%s -> %s", $this->escapeHtml($route->getValue()), $this->escapeHtml($route->getTranslation()));
         } else {
-            return $this->__('Add Item');
+            return $this->__('Add Translation');
         }
     }
 }

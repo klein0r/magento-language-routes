@@ -113,7 +113,6 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
                     'value' => Mage::app()->getStore(true)->getId()
                 )
             );
-            //$model->setStoreId(Mage::app()->getStore(true)->getId());
         }
 
         $fieldset->addField(
@@ -123,7 +122,7 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
                 'label' => $this->__('Route Part'),
                 'required' => true,
                 'name' => 'type_id',
-                'values' => Mage::getSingleton('mk_languageroutes/config_source_routetypes')->toOptionArray(),
+                'values' => Mage::getSingleton('mk_languageroutes/config_source_routetypes')->toOptionArray()
             )
         );
 
@@ -133,8 +132,7 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
             array(
                 'label' => $this->__('Original Value'),
                 'required' => true,
-                'name' => 'value',
-                #'disabled' => true
+                'name' => 'value'
             )
         );
 
@@ -144,7 +142,7 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
             array(
                 'label' => $this->__('Translation'),
                 'required' => true,
-                'name' => 'translation',
+                'name' => 'translation'
             )
         );
 
@@ -155,9 +153,13 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
                 'label' => $this->__('Is Active'),
                 'required' => true,
                 'name' => 'is_active',
-                'values' => Mage::getSingleton('adminhtml/system_config_source_yesno')->toOptionArray(),
+                'values' => Mage::getSingleton('adminhtml/system_config_source_yesno')->toOptionArray()
             )
         );
+
+        Mage::dispatchEvent('languageroute_adminhtml_form_edit', array(
+            'form' => $this
+        ));
 
         if (Mage::getSingleton('adminhtml/session')->getLanguagerouteData()) {
             $form->setValues(Mage::getSingleton('adminhtml/session')->getLanguagerouteData());
