@@ -29,6 +29,13 @@
  * @copyright   Copyright (c) 2014 Matthias Kleine (http://mkleine.de)
  * @license     http://opensource.org/licenses/MIT MIT
  */
+
+/**
+ * Class MKleine_LanguageRoutes_Model_Core_Url
+ *
+ * @method setNoTranslate
+ * @method getNoTranslate
+ */
 class MKleine_LanguageRoutes_Model_Core_Url extends Mage_Core_Model_Url
 {
     /**

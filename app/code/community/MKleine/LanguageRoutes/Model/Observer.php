@@ -60,6 +60,30 @@ class MKleine_LanguageRoutes_Model_Observer
     }
 
     /**
+     * Adds translation block for current url
+     *
+     * @param $observer Varien_Event_Observer
+     */
+    public function controllerActionLayoutGenerateBlocksAfter($observer)
+    {
+        /** @var $translate Mage_Core_Model_Translate_Inline */
+        $translate = Mage::getSingleton('core/translate_inline');
+        if ($translate->isAllowed()) {
+            /** @var $layout Mage_Core_Model_Layout */
+            $layout = $observer->getLayout();
+
+            if ($contentBlock = $layout->getBlock('content')) {
+                $translateBlock = $layout->createBlock(
+                    'mk_languageroutes/translate_uri',
+                    'languageroutes_inline_translate_uri'
+                );
+
+                $contentBlock->append($translateBlock);
+            }
+        }
+    }
+
+    /**
      * Forward the client to the translated url if configured
      *
      * @param $observer Varien_Event_Observer

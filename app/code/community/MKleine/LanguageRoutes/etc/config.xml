@@ -76,6 +76,15 @@
                     </mk_languageroutes>
                 </observers>
             </controller_action_layout_render_before>
+            <controller_action_layout_generate_blocks_after>
+                <observers>
+                    <mk_languageroutes>
+                        <class>mk_languageroutes/observer</class>
+                        <type>singleton</type>
+                        <method>controllerActionLayoutGenerateBlocksAfter</method>
+                    </mk_languageroutes>
+                </observers>
+            </controller_action_layout_generate_blocks_after>
             <controller_action_predispatch>
                 <observers>
                     <mk_languageroutes>

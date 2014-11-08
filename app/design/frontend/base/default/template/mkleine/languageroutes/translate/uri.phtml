@@ -1,0 +1,30 @@
+<?php /** @var $this MKleine_LanguageRoutes_Block_Translate_Uri */ ?>
+
+<?php if ($this->isAllowed()) : ?>
+    <div class="block block-translate" id="languageroute-translation" style="position: absolute; top: 10px; left: 10px; z-index: 1000;">
+        <div class="block-title">
+            <strong><span><?php echo $this->__('Translate Uri'); ?></span></strong>
+        </div>
+        <form id="languageRouteForm" action="<?php echo $this->getFormAction(); ?>" method="post">
+            <div class="block-content">
+                <p class="block-subtitle"><?php echo $this->__('Route'); ?> (<?php echo $this->getUntranslatedRoute(); ?>)</p>
+                <input type="text" name="route" value="<?php echo $this->getValueRoute(); ?>">
+                <input type="hidden" name="route_untranslated" value="<?php echo $this->getUntranslatedRoute(); ?>">
+
+                <p class="block-subtitle"><?php echo $this->__('Controller'); ?> (<?php echo $this->getUntranslatedController(); ?>)</p>
+                <input type="text" name="controller" value="<?php echo $this->getValueController(); ?>">
+                <input type="hidden" name="controller_untranslated" value="<?php echo $this->getUntranslatedController(); ?>">
+
+                <p class="block-subtitle"><?php echo $this->__('Action'); ?> (<?php echo $this->getUntranslatedAction(); ?>)</p>
+                <input type="text" name="action" value="<?php echo $this->getValueAction(); ?>">
+                <input type="hidden" name="action_untranslated" value="<?php echo $this->getUntranslatedAction(); ?>">
+
+                <input type="hidden" name="store_id" value="<?php echo Mage::app()->getStore()->getId() ?>">
+                <input type="hidden" name="current_url" value="<?php echo Mage::getUrl('*/*/*') ?>">
+                <div class="actions">
+                    <button type="submit" title="Abstimmen" class="button"><span><span><?php echo $this->__('Save'); ?></span></span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+<?php endif; ?>

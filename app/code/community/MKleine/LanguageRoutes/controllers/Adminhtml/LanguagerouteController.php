@@ -206,4 +206,31 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
         $this->getResponse()->setHeader('Content-type', 'application/json');
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
     }
+
+    /**
+     * Controller to save information
+     */
+    public function saveinlineAction()
+    {
+        $returlUrl = $this->getRequest()->getParam('current_url', false);
+        $storeId = $this->getRequest()->getParam('store_id', false);
+
+        $routeT = $this->getRequest()->getParam('route', false);
+        $routeU = $this->getRequest()->getParam('route_untranslated', false);
+
+        $controllerT = $this->getRequest()->getParam('controller', false);
+        $controllerU = $this->getRequest()->getParam('controller_untranslated', false);
+
+        $actionT = $this->getRequest()->getParam('action', false);
+        $actionU = $this->getRequest()->getParam('action_untranslated', false);
+
+        // TODO: Insert or replace information
+
+        if ($returlUrl) {
+            $this->_redirectUrl($returlUrl);
+        }
+        else {
+            $this->_redirect('*/*/index');
+        }
+    }
 }
