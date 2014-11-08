@@ -48,40 +48,24 @@ class MKleine_LanguageRoutes_Controller_Varien_Router_Standard
     {
         // Just apply the translation to routes without .html
         if (Mage::helper('mk_languageroutes')->isUriTranslatable($request->getPathInfo())) {
-            $pathInfo = explode('/', $request->getPathInfo(), 5);
-
-            $originalRoute = $request->getPathInfo();
 
             /** @var $translationModel MKleine_LanguageRoutes_Model_Translation */
             $translationModel = Mage::getSingleton('mk_languageroutes/translation');
-
-            // Route
-            if (isset($pathInfo[1])) {
-                $pathInfo[1] = $translationModel->translateRouteToMage($pathInfo[1]);
-            }
-
-            // Controller
-            if (isset($pathInfo[2])) {
-                $pathInfo[2] = $translationModel->translateControllerToMage($pathInfo[2]);
-            }
-
-            // Action
-            if (isset($pathInfo[3])) {
-                $pathInfo[3] = $translationModel->translateActionToMage($pathInfo[3]);
-            }
+            $translationModel->setRequest($request);
 
             Mage::dispatchEvent('languageroute_set_path_info_before', array(
-                'path_info' => $pathInfo
+                'translation_model' => $translationModel
             ));
 
-            $internalRoute = join('/', $pathInfo);
+            if ($internalRoute = $translationModel->getTranslatedPath()) {
 
-            Mage::register('languageroute_information', new Varien_Object(array(
-                'original' => trim($originalRoute, '/'),
-                'internal' => trim($internalRoute, '/')
-            )));
+                Mage::register('languageroute_information', new Varien_Object(array(
+                    'original' => trim($request->getPathInfo(), '/'),
+                    'internal' => trim($internalRoute, '/')
+                )));
 
-            $request->setPathInfo($internalRoute);
+                $request->setPathInfo($internalRoute);
+            }
         }
         return parent::match($request);
     }

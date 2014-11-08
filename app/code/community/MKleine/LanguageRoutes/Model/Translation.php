@@ -29,6 +29,13 @@
  * @copyright   Copyright (c) 2014 Matthias Kleine (http://mkleine.de)
  * @license     http://opensource.org/licenses/MIT MIT
  */
+
+/**
+ * Class MKleine_LanguageRoutes_Model_Translation
+ *
+ * @method setRequest
+ * @method getRequest
+ */
 class MKleine_LanguageRoutes_Model_Translation extends Mage_Core_Model_Abstract
 {
     const LANGUAGEROUTE_CACHE_TAG = 'languageroute';
@@ -39,6 +46,33 @@ class MKleine_LanguageRoutes_Model_Translation extends Mage_Core_Model_Abstract
             $this->setData('store_id', $storeId = Mage::app()->getStore()->getId());
         }
         return $this->getData('store_id');
+    }
+
+    public function getTranslatedPath()
+    {
+        /** @var $request Zend_Controller_Request_Http */
+        if ($request = $this->getRequest()) {
+            $pathInfo = explode('/', $request->getPathInfo(), 5);
+
+            // Route
+            if (isset($pathInfo[1])) {
+                $pathInfo[1] = $this->translateRouteToMage($pathInfo[1]);
+            }
+
+            // Controller
+            if (isset($pathInfo[2])) {
+                $pathInfo[2] = $this->translateControllerToMage($pathInfo[2]);
+            }
+
+            // Action
+            if (isset($pathInfo[3])) {
+                $pathInfo[3] = $this->translateActionToMage($pathInfo[3]);
+            }
+
+            return join('/', $pathInfo);
+        }
+
+        return false;
     }
 
     public function translateRouteToMage($route)
