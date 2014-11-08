@@ -48,6 +48,16 @@ class MKleine_LanguageRoutes_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * @return bool
+     */
+    public function isInlineTranslationEnabled()
+    {
+        /** @var $translate Mage_Core_Model_Translate_Inline */
+        $translate = Mage::getSingleton('core/translate_inline');
+        return $translate->isAllowed() && $this->isTranslationEnabled();
+    }
+
+    /**
      * Will create a new router to collect all standard routes
      *
      * @return array

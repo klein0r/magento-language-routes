@@ -37,9 +37,7 @@ class MKleine_LanguageRoutes_Block_Translate_Uri extends Mage_Core_Block_Templat
      */
     public function isAllowed()
     {
-        /** @var $translate Mage_Core_Model_Translate_Inline */
-        $translate = Mage::getSingleton('core/translate_inline');
-        return $translate->isAllowed();
+        return Mage::helper('mk_languageroutes')->isInlineTranslationEnabled();
     }
 
     /**

@@ -7,9 +7,7 @@ class MKleine_LanguageRoutes_TranslationController extends Mage_Core_Controller_
      */
     public function saveinlineAction()
     {
-        /** @var $translate Mage_Core_Model_Translate_Inline */
-        $translate = Mage::getSingleton('core/translate_inline');
-        if ($translate->isAllowed()) {
+        if (Mage::helper('mk_languageroutes')->isInlineTranslationEnabled()) {
             $returlUrl = $this->getRequest()->getParam('current_url', false);
             $storeId = $this->getRequest()->getParam('store_id', false);
 
@@ -85,8 +83,11 @@ class MKleine_LanguageRoutes_TranslationController extends Mage_Core_Controller_
                 ));
             }
             else {
-                $this->_redirect('*/*/index');
+                $this->_redirect('/');
             }
+        }
+        else {
+            $this->_redirect('/');
         }
     }
 }

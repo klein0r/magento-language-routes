@@ -58,15 +58,14 @@ class MKleine_LanguageRoutes_Model_Observer
     }
 
     /**
-     * Adds translation block for current url
+     * Adds translation block for current url when inline translation is enabled
+     * and module has been activated
      *
      * @param $observer Varien_Event_Observer
      */
     public function controllerActionLayoutGenerateBlocksAfter($observer)
     {
-        /** @var $translate Mage_Core_Model_Translate_Inline */
-        $translate = Mage::getSingleton('core/translate_inline');
-        if ($translate->isAllowed()) {
+        if (Mage::helper('mk_languageroutes')->isInlineTranslationEnabled()) {
             /** @var $layout Mage_Core_Model_Layout */
             $layout = $observer->getLayout();
 
