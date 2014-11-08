@@ -15,7 +15,19 @@ class MKleine_LanguageRoutes_Block_Translate_Uri extends Mage_Core_Block_Templat
      */
     public function getFormAction()
     {
-        return Mage::getModel('adminhtml/url')->getUrl('adminhtml/languageroute/saveinline');
+        return Mage::getUrl('languageroute/translation/saveinline');
+    }
+
+    public function getFormKey()
+    {
+        $appEmulation = Mage::getSingleton('core/app_emulation');
+        $initialEnvironmentInfo = $appEmulation->startEnvironmentEmulation(Mage_Core_Model_App::ADMIN_STORE_ID);
+
+        $formKey = Mage::getSingleton('core/session')->getFormKey();
+
+        $appEmulation->stopEnvironmentEmulation($initialEnvironmentInfo);
+
+        return $formKey;
     }
 
     /**

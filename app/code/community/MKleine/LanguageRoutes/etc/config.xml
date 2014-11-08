@@ -95,6 +95,15 @@
                 </observers>
             </controller_action_predispatch>
         </events>
+        <routers>
+            <mk_languageroutes>
+                <use>standard</use>
+                <args>
+                    <module>MKleine_LanguageRoutes</module>
+                    <frontName>languageroute</frontName>
+                </args>
+            </mk_languageroutes>
+        </routers>
     </frontend>
     <admin>
         <routers>

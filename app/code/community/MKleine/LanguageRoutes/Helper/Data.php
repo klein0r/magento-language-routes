@@ -60,6 +60,16 @@ class MKleine_LanguageRoutes_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Clears the cache of all translated routes
+     */
+    public function clearTranslationCache()
+    {
+        /** @var $translationModel MKleine_LanguageRoutes_Model_Translation */
+        $translationModel = Mage::getSingleton('mk_languageroutes/translation');
+        $translationModel->clearCache();
+    }
+
+    /**
      * Collects all controllers which can be used for frontend
      *
      * @return array

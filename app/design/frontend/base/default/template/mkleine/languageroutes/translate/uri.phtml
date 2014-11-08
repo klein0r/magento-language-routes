@@ -21,6 +21,7 @@
 
                 <input type="hidden" name="store_id" value="<?php echo Mage::app()->getStore()->getId() ?>">
                 <input type="hidden" name="current_url" value="<?php echo Mage::getUrl('*/*/*') ?>">
+                <input name="form_key" type="hidden" value="<?php echo $this->getFormKey(); ?>" />
                 <div class="actions">
                     <button type="submit" title="Abstimmen" class="button"><span><span><?php echo $this->__('Save'); ?></span></span></button>
                 </div>

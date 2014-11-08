@@ -38,9 +38,7 @@ class MKleine_LanguageRoutes_Model_Observer
      */
     public function languagerouteSaveAfter($observer)
     {
-        /** @var $translationModel MKleine_LanguageRoutes_Model_Translation */
-        $translationModel = Mage::getSingleton('mk_languageroutes/translation');
-        $translationModel->clearCache();
+        Mage::helper('mk_languageroutes')->clearTranslationCache();
     }
 
     /**

@@ -11,6 +11,7 @@
 - Extension uses the **Magento Cache** to avoid performance issues
 - **Manage permissions** for translations by roles
 - Old URLs are still working (even if they translated)
+- **Inline-Translation of URLs**
 
 ## Configuration
 
@@ -24,7 +25,13 @@ It is possible to forward the user automatically to the translated URL:
 
 ## Usage
 
+**It is recommended, to install and test this extension in a test environment.**
+
 Example: You want translate "/customer/account/login" to "/kunde/konto/anmelden"
+
+### By using the Backend
+
+*This is recommended when adding translations in production environments*
 
 1. Go to System / Language Routes
 2. Click Add
@@ -37,13 +44,24 @@ Example: You want translate "/customer/account/login" to "/kunde/konto/anmelden"
 6. Save
 7. Check the changes in Frontend
 
-**It is recommended, to install and test this extension in a test environment.**
+### By using inline translation
+
+*This is recommended when adding translations in staging / development environments*
+
+1. Go to System / Configuration
+2. Open the Developer menu
+3. Navigate to "Translate inline"
+4. Enabled for Frontend -> Yes
+5. Clear caches
+6. Open the frontend and translate every url step by step
 
 ## Screenshots
 
 ![Backend Grid](/screenshots/Backend-Grid.png)
 
 ![Backend Grid](/screenshots/Backend-Form.png)
+
+![Backend Grid](/screenshots/Inline-Translation.png)
 
 ## Dev
 
