@@ -39,6 +39,7 @@ class MKleine_LanguageRoutes_Test_Model_Config_Source_Routetypes
     {
         /** @var $routeTypes MKleine_LanguageRoutes_Model_Config_Source_Routetypes */
         $routeTypes = Mage::getModel('mk_languageroutes/config_source_routetypes');
-        $this->assertEquals(3, count($routeTypes));
+        $this->assertEquals(3, count($routeTypes->toArray()));
+        $this->assertEquals(3, count($routeTypes->toOptionArray()));
     }
 }

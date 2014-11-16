@@ -32,5 +32,13 @@
 class MKleine_LanguageRoutes_Test_Model_Translation
     extends EcomDev_PHPUnit_Test_Case
 {
-
+    /**
+     * @test
+     */
+    public function testTranslation()
+    {
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
 }
