@@ -29,8 +29,32 @@
  * @copyright   Copyright (c) 2014 Matthias Kleine (http://mkleine.de)
  * @license     http://opensource.org/licenses/MIT MIT
  */
-class MKleine_LanguageRoutes_Test_Helper_Data
-    extends EcomDev_PHPUnit_Test_Case
+class MKleine_LanguageRoutes_Test_Config_Main
+    extends EcomDev_PHPUnit_Test_Case_Config
 {
+    /**
+     * @test
+     */
+    public function testCodePool()
+    {
+        $this->assertModuleCodePool('community');
+    }
+    
+    /**
+     * @test
+     */
+    public function testHelpers()
+    {
+        $this->assertHelperAlias('mk_languageroutes', 'MKleine_LanguageRoutes_Helper_Data');
+        $this->assertHelperAlias('mk_languageroutes/data', 'MKleine_LanguageRoutes_Helper_Data');
+    }
 
+    /**
+     * @test
+     */
+    public function testModels()
+    {
+        $this->assertModelAlias('mk_languageroutes/translation', 'MKleine_LanguageRoutes_Model_Translation');
+        $this->assertModelAlias('mk_languageroutes/languageroute', 'MKleine_LanguageRoutes_Model_Languageroute');
+    }
 }

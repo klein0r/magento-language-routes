@@ -29,8 +29,16 @@
  * @copyright   Copyright (c) 2014 Matthias Kleine (http://mkleine.de)
  * @license     http://opensource.org/licenses/MIT MIT
  */
-class MKleine_LanguageRoutes_Test_Helper_Data
+class MKleine_LanguageRoutes_Test_Model_Config_Source_Routetypes
     extends EcomDev_PHPUnit_Test_Case
 {
-
+    /**
+     * @test
+     */
+    public function testConfigValues()
+    {
+        /** @var $routeTypes MKleine_LanguageRoutes_Model_Config_Source_Routetypes */
+        $routeTypes = Mage::getModel('mk_languageroutes/config_source_routetypes');
+        $this->assertEquals(3, count($routeTypes));
+    }
 }

@@ -162,7 +162,7 @@
     <phpunit>
         <suite>
             <modules>
-                <Aoe_TemplateHints/>
+                <MKleine_LanguageRoutes/>
             </modules>
         </suite>
     </phpunit>
