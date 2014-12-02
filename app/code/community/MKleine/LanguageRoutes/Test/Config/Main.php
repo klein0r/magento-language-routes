@@ -57,4 +57,48 @@ class MKleine_LanguageRoutes_Test_Config_Main
         $this->assertModelAlias('mk_languageroutes/translation', 'MKleine_LanguageRoutes_Model_Translation');
         $this->assertModelAlias('mk_languageroutes/languageroute', 'MKleine_LanguageRoutes_Model_Languageroute');
     }
+
+    /**
+     * @test
+     */
+    public function testRewrites()
+    {
+        $this->assertModelAlias('core/url', 'MKleine_LanguageRoutes_Model_Core_Url');
+    }
+
+    /**
+     * @test
+     */
+    public function testObserverRegistrations()
+    {
+        // Frontend
+        $this->assertEventObserverDefined(
+            'frontend',
+            'controller_action_layout_render_before',
+            'mk_languageroutes/observer',
+            'controllerActionLayoutRenderBefore'
+        );
+
+        $this->assertEventObserverDefined(
+            'frontend',
+            'controller_action_layout_generate_blocks_after',
+            'mk_languageroutes/observer',
+            'controllerActionLayoutGenerateBlocksAfter'
+        );
+
+        $this->assertEventObserverDefined(
+            'frontend',
+            'controller_action_predispatch',
+            'mk_languageroutes/observer',
+            'controllerActionPredispatch'
+        );
+
+        // Adminhtml
+        $this->assertEventObserverDefined(
+            'adminhtml',
+            'languageroute_save_after',
+            'mk_languageroutes/observer',
+            'languagerouteSaveAfter'
+        );
+    }
 }
