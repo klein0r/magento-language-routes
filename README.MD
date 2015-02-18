@@ -4,6 +4,8 @@
 
 [![Build Status](https://travis-ci.org/klein0r/magento-language-routes.svg?branch=master)](https://travis-ci.org/klein0r/magento-language-routes)
 
+[![Code Climate](https://codeclimate.com/github/klein0r/magento-language-routes/badges/gpa.svg)](https://codeclimate.com/github/klein0r/magento-language-routes)
+
 ## Features
 
 - Translate all URLs for each store (e.g. /customer/account/create -> /kunde/konto/erstellen)
