@@ -8,8 +8,6 @@ script:
 addons:
   code_climate:
     repo_token: 03942e903cbb5b61f64625e1e18d98949cd802db4d4e422858ed5ac98e995afc
-after_script:
-  - ${BUILDENV}/vendor/bin/test-reporter
 notifications:
   email:
     recipients:
