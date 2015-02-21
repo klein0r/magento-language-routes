@@ -1,6 +1,6 @@
 language: php
 php:
-  - 5.3
+  - 5.4
 env:
   - MAGENTO_VERSION=magento-ce-1.9.1.0
 script:
