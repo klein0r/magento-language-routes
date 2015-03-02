@@ -30,7 +30,7 @@
  * @license     http://opensource.org/licenses/MIT MIT
  */
 class MKleine_LanguageRoutes_Test_Model_Config_Source_Routetypes
-    extends EcomDev_PHPUnit_Test_Case
+    extends Codex_Xtest_Xtest_Unit_Abstract
 {
     /**
      * @test

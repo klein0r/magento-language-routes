@@ -30,15 +30,114 @@
  * @license     http://opensource.org/licenses/MIT MIT
  */
 class MKleine_LanguageRoutes_Test_Controller_Router
-    extends EcomDev_PHPUnit_Test_Case_Controller
+    extends Codex_Xtest_Xtest_Unit_Frontend
 {
+    protected function setUp()
+    {
+        parent::setUp();
+
+        /** @var $translations MKleine_LanguageRoutes_Model_Resource_Languageroute_Collection */
+        $translations = Mage::getModel('mk_languageroutes/languageroute')->getCollection();
+        $translations->walk('delete');
+
+        /** @var $translationModel MKleine_LanguageRoutes_Model_Translation */
+        $translationModel = Mage::getSingleton('mk_languageroutes/translation');
+        $translationModel->clearCache();
+    }
+
+    /**
+     * @param $type
+     * @param $value
+     * @param $translation
+     * @return MKleine_LanguageRoutes_Model_Languageroute
+     */
+    protected function createRoute($storeId, $type, $value, $translation)
+    {
+        /** @var $testRoute MKleine_LanguageRoutes_Model_Languageroute */
+        $testRoute = Mage::getModel('mk_languageroutes/languageroute');
+        $testRoute->setTypeId($type);
+        $testRoute->setValue($value);
+        $testRoute->setTranslation($translation);
+        $testRoute->setStoreId($storeId);
+        $testRoute->setIsActive(1);
+        $testRoute->save();
+
+        return $testRoute;
+    }
+
+    protected function createExampleRoute($storeId)
+    {
+        $this->createRoute(
+            $storeId,
+            MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ROUTER,
+            'customer',
+            'kunde'
+        );
+
+        $this->createRoute(
+            $storeId,
+            MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_CONTROLLER,
+            'account',
+            'konto'
+        );
+
+        $this->createRoute(
+            $storeId,
+            MKleine_LanguageRoutes_Model_Languageroute::LANGUAGEROUTE_TYPE_ACTION,
+            'create',
+            'erstellen'
+        );
+
+        /** @var $translations MKleine_LanguageRoutes_Model_Resource_Languageroute_Collection */
+        $translations = Mage::getModel('mk_languageroutes/languageroute')
+            ->getCollection()
+            ->addFieldToFilter('store_id', $storeId);
+        $this->assertEquals(3, $translations->count());
+    }
+
     /**
      * @test
      */
-    public function testTranslationController()
+    public function testStoreTranslations()
     {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $storeId = Mage::app()->getStore()->getId();
+        $this->createExampleRoute($storeId);
+
+        $this->dispatch('/kunde/konto/erstellen/');
+        $this->assertContains('customer-account-create', $this->getResponseBody());
+    }
+
+    /**
+     * @test
+     */
+    public function testGlobalTranslations()
+    {
+        $this->createExampleRoute(0);
+
+        $this->dispatch('/kunde/konto/erstellen/');
+        $this->assertContains('customer-account-create', $this->getResponseBody());
+    }
+
+    /**
+     * @test
+     */
+    public function testOtherStoreTranslation()
+    {
+        /** @var $currentStore Mage_Core_Model_Store */
+        $currentStore = Mage::app()->getStore();
+
+        /** @var $store Mage_Core_Model_Store */
+        $store = Mage::getModel('core/store');
+        $store->setCode('test')
+            ->setWebsiteId($currentStore->getWebsiteId())
+            ->setGroupId($currentStore->getGroupId())
+            ->setName('Test Store')
+            ->setIsActive(1)
+            ->save();
+
+        $this->createExampleRoute($store->getId());
+
+        $this->setExpectedException('Mage_Core_Exception', '404');
+        $this->dispatch('/kunde/konto/erstellen/');
     }
 }

@@ -42,6 +42,7 @@
  * @method setStoreId
  * @method getCreatedAt
  * @method getUpdatedAt
+ * @method setIsActive
  * @method getIsActive
  */
 class MKleine_LanguageRoutes_Model_Languageroute

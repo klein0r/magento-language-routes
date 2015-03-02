@@ -43,7 +43,7 @@ class MKleine_LanguageRoutes_Model_Translation extends Mage_Core_Model_Abstract
     public function getStoreId()
     {
         if (!$this->hasData('store_id')) {
-            $this->setData('store_id', $storeId = Mage::app()->getStore()->getId());
+            $this->setData('store_id', Mage::app()->getStore()->getId());
         }
         return $this->getData('store_id');
     }
@@ -148,9 +148,10 @@ class MKleine_LanguageRoutes_Model_Translation extends Mage_Core_Model_Abstract
     protected function getRouteCollection($typeId)
     {
         return Mage::getModel('mk_languageroutes/languageroute')->getCollection()
-            ->addFieldToFilter('store_id', $this->getStoreId())
+            ->addFieldToFilter('store_id', array('in' => array(0, (int)$this->getStoreId())))
             ->addFieldToFilter('type_id', $typeId)
-            ->addFieldToFilter('is_active', 1);
+            ->addFieldToFilter('is_active', 1)
+            ->setOrder('store_id', Varien_Data_Collection_Db::SORT_ORDER_DESC);
     }
 
     protected function getValueOfCollection($value, $collection, $fallback, $cacheKey)

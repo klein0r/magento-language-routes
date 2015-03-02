@@ -35,6 +35,11 @@
                 <class>MKleine_LanguageRoutes_Helper</class>
             </mk_languageroutes>
         </helpers>
+        <xtests>
+            <mk_languageroutes>
+                <class>MKleine_LanguageRoutes_Xtest</class>
+            </mk_languageroutes>
+        </xtests>
         <resources>
             <languageroutes_setup>
                 <setup>
@@ -159,11 +164,4 @@
             </routers>
         </web>
     </default>
-    <phpunit>
-        <suite>
-            <modules>
-                <MKleine_LanguageRoutes/>
-            </modules>
-        </suite>
-    </phpunit>
 </config>
