@@ -29,8 +29,8 @@
  * @copyright   Copyright (c) 2014 Matthias Kleine (http://mkleine.de)
  * @license     http://opensource.org/licenses/MIT MIT
  */
-class MKleine_LanguageRoutes_Test_Config_Main
-    extends Codex_Xtest_Xtest_Unit_Config
+class MKleine_LanguageRoutes_Test_Config_MainTest
+    extends Codex_Xtest_Xtest_Unit_Abstract
 {
     /**
      * @test

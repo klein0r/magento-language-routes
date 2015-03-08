@@ -29,7 +29,7 @@
  * @copyright   Copyright (c) 2014 Matthias Kleine (http://mkleine.de)
  * @license     http://opensource.org/licenses/MIT MIT
  */
-class MKleine_LanguageRoutes_Test_Model_Config_Source_Routetypes
+class MKleine_LanguageRoutes_Test_Model_Config_Source_RoutetypesTest
     extends Codex_Xtest_Xtest_Unit_Abstract
 {
     /**

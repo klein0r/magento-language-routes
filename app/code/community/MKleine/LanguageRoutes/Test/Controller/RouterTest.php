@@ -29,7 +29,7 @@
  * @copyright   Copyright (c) 2014 Matthias Kleine (http://mkleine.de)
  * @license     http://opensource.org/licenses/MIT MIT
  */
-class MKleine_LanguageRoutes_Test_Controller_Router
+class MKleine_LanguageRoutes_Test_Controller_RouterTest
     extends Codex_Xtest_Xtest_Unit_Frontend
 {
     protected function setUp()
@@ -139,5 +139,33 @@ class MKleine_LanguageRoutes_Test_Controller_Router
 
         $this->setExpectedException('Mage_Core_Exception', '404');
         $this->dispatch('/kunde/konto/erstellen/');
+
+    }
+
+    /**
+     * @test
+     */
+    public function testOtherStoreTranslation2()
+    {
+        /** @var $currentStore Mage_Core_Model_Store */
+        $currentStore = Mage::app()->getStore();
+
+        /** @var $store Mage_Core_Model_Store */
+        $store = Mage::getModel('core/store');
+        $store->setCode('test')
+            ->setWebsiteId($currentStore->getWebsiteId())
+            ->setGroupId($currentStore->getGroupId())
+            ->setName('Test Store')
+            ->setIsActive(1)
+            ->save();
+
+        $this->createExampleRoute($store->getId());
+
+        Xtest::initFrontend( $store->getCode() );
+        $this->dispatch('/kunde/konto/erstellen/');
+        $this->assertNotEmpty( $this->getResponseBody() );
+
+
+
     }
 }

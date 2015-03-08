@@ -29,16 +29,45 @@
  * @copyright   Copyright (c) 2014 Matthias Kleine (http://mkleine.de)
  * @license     http://opensource.org/licenses/MIT MIT
  */
-class MKleine_LanguageRoutes_Test_Model_Translation
-    extends Codex_Xtest_Xtest_Unit_Abstract
+class MKleine_LanguageRoutes_Test_Helper_DataTest
+    extends Codex_Xtest_Xtest_Unit_Frontend
 {
+    /**
+     * @return MKleine_LanguageRoutes_Helper_Data
+     */
+    protected function getHelper()
+    {
+        return Mage::helper('mk_languageroutes');
+    }
+
     /**
      * @test
      */
-    public function testTranslation()
+    public function testTranslationEnabled()
     {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        // web/url/enable_route_translation
+
+    }
+
+    /**
+     * @test
+     */
+    public function testIsTranslateable()
+    {
+        $helper = $this->getHelper();
+
+        $this->assertTrue($helper->isUriTranslatable('http://my-test-store.de/customer/account/create/'));
+        $this->assertFalse($helper->isUriTranslatable('http://my-test-store.de/translate-no-rewrites.html'));
+    }
+
+    public function testGetAvailableRoutes()
+    {
+        $helper = $this->getHelper();
+
+        $routes = $helper->getAvailableRoutes();
+
+        $this->assertContains('customer', $routes);
+        $this->assertContains('catalog', $routes);
+        $this->assertContains('checkout', $routes);
     }
 }
