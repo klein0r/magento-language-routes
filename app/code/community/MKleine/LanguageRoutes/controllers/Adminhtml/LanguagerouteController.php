@@ -156,10 +156,10 @@ class MKleine_LanguageRoutes_Adminhtml_LanguagerouteController
             Mage::getSingleton('adminhtml/session')->addError($this->__('Please select item(s)'));
         } else {
             try {
-                foreach ($languagerouteIds as $languagerouteId) {
-                    $languageroute = Mage::getModel('mk_languageroutes/languageroute')->load($languagerouteId);
-                    $languageroute->delete();
-                }
+                Mage::getModel('mk_languageroutes/languageroute')
+                    ->getCollection()
+                    ->addFieldToFilter('entity_id', array('in' => $languagerouteIds))
+                    ->walk('delete');
 
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('adminhtml')->__(

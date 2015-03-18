@@ -58,6 +58,44 @@ class MKleine_LanguageRoutes_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Clears the cache of all translated routes
+     */
+    public function clearTranslationCache()
+    {
+        /** @var $translationModel MKleine_LanguageRoutes_Model_Translation */
+        $translationModel = Mage::getSingleton('mk_languageroutes/translation');
+        $translationModel->clearCache();
+    }
+
+    /**
+     * @param $model MKleine_LanguageRoutes_Model_Languageroute
+     */
+    public function insertOrUpdateTranslation($model)
+    {
+        /** @var $collection MKleine_LanguageRoutes_Model_Resource_Languageroute_Collection */
+        $collection = Mage::getModel('mk_languageroutes/languageroute')
+            ->getCollection()
+            ->addFieldToFilter('store_id', $model->getStoreId())
+            ->addFieldToFilter('type_id', $model->getTypeId())
+            ->addFieldToFilter('value', $model->getValue());
+
+        /** @var $existingItem MKleine_LanguageRoutes_Model_Languageroute */
+        if ($existingItem = $collection->getFirstItem()) {
+            $existingItem->addData($model->getData());
+
+            if ($existingItem->getTranslation()) {
+                $existingItem->save();
+            }
+            else {
+                $existingItem->delete();
+            }
+        }
+        else if ($model->getTranslation()) {
+            $model->save();
+        }
+    }
+
+    /**
      * Will create a new router to collect all standard routes
      *
      * @return array
@@ -67,16 +105,6 @@ class MKleine_LanguageRoutes_Helper_Data extends Mage_Core_Helper_Abstract
         $router = new MKleine_LanguageRoutes_Controller_Varien_Router_Standard();
         $router->collectRoutes(Mage_Core_Model_App_Area::AREA_FRONTEND, 'standard');
         return $router->getFrontNames();
-    }
-
-    /**
-     * Clears the cache of all translated routes
-     */
-    public function clearTranslationCache()
-    {
-        /** @var $translationModel MKleine_LanguageRoutes_Model_Translation */
-        $translationModel = Mage::getSingleton('mk_languageroutes/translation');
-        $translationModel->clearCache();
     }
 
     /**
@@ -90,11 +118,13 @@ class MKleine_LanguageRoutes_Helper_Data extends Mage_Core_Helper_Abstract
 
         $controllers = array();
         foreach ($allModules as $moduleName => $moduleSettings) {
-            if (Mage::helper('core')->isModuleEnabled($moduleName))
-            {
-                foreach (glob(Mage::getModuleDir('controllers', $moduleName). DS . '*') as $controller) {
-                    if (is_file($controller) && strpos($controller, 'Adminhtml') === false) {
-                        $controllers[] = strtolower(str_replace('Controller.php', '', basename($controller)));
+            if (Mage::helper('core')->isModuleEnabled($moduleName)) {
+                $controllerDir = Mage::getModuleDir('controllers', $moduleName);
+                if (is_dir($controllerDir)) {
+                    foreach (new DirectoryIterator($controllerDir) as $file) {
+                        if ($file->isFile() && strpos($file->getPath() . DS . $file->getFilename(), 'Adminhtml') === false) {
+                            $controllers[] = strtolower(str_replace('Controller.php', '', $file->getFilename()));
+                        }
                     }
                 }
             }

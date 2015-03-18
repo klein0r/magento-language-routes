@@ -98,7 +98,7 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Edit_Tab_Form
                     'label' => Mage::helper('cms')->__('Store View'),
                     'title' => Mage::helper('cms')->__('Store View'),
                     'required' => true,
-                    'values' => Mage::getSingleton('adminhtml/system_store')->getStoreValuesForForm(false, false),
+                    'values' => Mage::getSingleton('adminhtml/system_store')->getStoreValuesForForm(false, true),
                     'disabled' => $isElementDisabled,
                     'name' => 'store_id',
                 )

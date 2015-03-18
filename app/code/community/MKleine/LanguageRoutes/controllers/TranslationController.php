@@ -9,7 +9,7 @@ class MKleine_LanguageRoutes_TranslationController extends Mage_Core_Controller_
     {
         if (Mage::helper('mk_languageroutes')->isInlineTranslationEnabled()) {
             $returlUrl = $this->getRequest()->getParam('current_url', false);
-            $storeId = $this->getRequest()->getParam('store_id', false);
+            $storeId = $this->getRequest()->getParam('store_id', 0);
 
             $origRoute = $this->getRequest()->getParam('route_untranslated', false);
             $origController = $this->getRequest()->getParam('controller_untranslated', false);
@@ -49,27 +49,7 @@ class MKleine_LanguageRoutes_TranslationController extends Mage_Core_Controller_
                 $model = Mage::getModel('mk_languageroutes/languageroute');
                 $model->setData($languageRoute);
 
-                $collection = Mage::getModel('mk_languageroutes/languageroute')
-                    ->getCollection()
-                    ->addFieldToFilter('store_id', $model->getStoreId())
-                    ->addFieldToFilter('type_id', $model->getTypeId())
-                    ->addFieldToFilter('value', $model->getValue());
-
-                    /** @var $existingItem MKleine_LanguageRoutes_Model_Languageroute */
-                    if ($existingItem = $collection->getFirstItem()) {
-                        $existingItem->addData($languageRoute);
-
-                        if ($existingItem->getTranslation()) {
-                            $existingItem->save();
-                        }
-                        else {
-                            $existingItem->delete();
-                        }
-                    }
-                    else if ($model->getTranslation()) { {
-                        $model->save();
-                    }
-                }
+                Mage::helper('mk_languageroutes')->insertOrUpdateTranslation($model);
             }
 
             // Clear route translation cache

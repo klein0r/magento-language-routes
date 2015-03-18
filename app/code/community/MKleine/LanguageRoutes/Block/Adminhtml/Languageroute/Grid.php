@@ -60,16 +60,18 @@ class MKleine_LanguageRoutes_Block_Adminhtml_Languageroute_Grid
             )
         );
 
-        $this->addColumn(
-            'store_id',
-            array(
-                'header' => $this->__('Store'),
-                'align' => 'left',
-                'index' => 'store_id',
-                'type' => 'store',
-                'sortable' => true
-            )
-        );
+        if (!Mage::app()->isSingleStoreMode()) {
+            $this->addColumn(
+                'store_id',
+                array(
+                    'header' => $this->__('Store'),
+                    'align' => 'left',
+                    'index' => 'store_id',
+                    'type' => 'store',
+                    'sortable' => true
+                )
+            );
+        }
 
         $this->addColumn(
             'type_id',
