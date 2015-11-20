@@ -1,10 +1,7 @@
 # Magento Language Routes
 
-**License:** The MIT License (MIT)
+[![Build Status](https://travis-ci.org/klein0r/magento-language-routes.svg?branch=master)](https://travis-ci.org/klein0r/magento-language-routes) [![Code Climate](https://codeclimate.com/github/klein0r/magento-language-routes/badges/gpa.svg)](https://codeclimate.com/github/klein0r/magento-language-routes) [![Latest Stable Version](https://poser.pugx.org/mkleine/magento-language-routes/v/stable)](https://packagist.org/packages/mkleine/magento-language-routes) [![Total Downloads](https://poser.pugx.org/mkleine/magento-language-routes/downloads)](https://packagist.org/packages/mkleine/magento-language-routes) [![Latest Unstable Version](https://poser.pugx.org/mkleine/magento-language-routes/v/unstable)](https://packagist.org/packages/mkleine/magento-language-routes) [![License](https://poser.pugx.org/mkleine/magento-language-routes/license)](https://packagist.org/packages/mkleine/magento-language-routes)
 
-[![Build Status](https://travis-ci.org/klein0r/magento-language-routes.svg?branch=master)](https://travis-ci.org/klein0r/magento-language-routes)
-
-[![Code Climate](https://codeclimate.com/github/klein0r/magento-language-routes/badges/gpa.svg)](https://codeclimate.com/github/klein0r/magento-language-routes)
 
 ## Features
 
